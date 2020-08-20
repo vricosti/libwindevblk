@@ -36,3 +36,5 @@ int __cdecl devblk_fstat(int fd, struct _stat *buf);
 int __cdecl devblk_close(int fd);
 //TODO
 ```
+
+This library has been tested with CMake and VS2019.
