@@ -12,9 +12,17 @@ The API is close to the traditional one used to manipulate files (CreateFile, Re
 
 * BOOL Close(HDEVBLK hDevBlk);
 
-
 The argument iDevBlkNumber corresponds to the index of the device, you can use the provided utility to know it or use diskpart.
 The argument iPartitionNumber corresponds to the partition index. The index 0 corresponds to the whole device.
 
 
-There is also a work in progress posix api that allows to open a device using its linux name (ex: /dev/sda)
+There are also some functions used to enumerate devices and their partitions:
+
+* BOOL DevBlkEnumDriveInfo(...)
+
+* BOOL DevBlkEnumDevBlkInfo(...)
+
+
+
+
+There is also a work in progress to propose a posix api that allows to open a device using its linux name (ex: /dev/sda)
