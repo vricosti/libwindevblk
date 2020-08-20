@@ -28,4 +28,11 @@ The library has some functions used to enumerate devices and their partitions:
 ```
 
 
-There is also a work in progress to propose a posix api that allows to open a device using its linux name (ex: /dev/sda)
+There is also a work in progress to propose a posix api that allows to open a device using its linux name (ex: /dev/sda):
+
+```
+int __cdecl devblk_open(const char* pathname, int flags, mode_t mode);
+int __cdecl devblk_fstat(int fd, struct _stat *buf);
+int __cdecl devblk_close(int fd);
+//TODO
+```
