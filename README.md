@@ -1,7 +1,7 @@
 # libwindevblk
 Library to easily read/write windows partitions or disk drives
 
-libwindevblk provides a simplified Windows API to access disk(HDD, SSD, ...) or removable media (USB, SDCard, ...).
+libwindevblk provides a simplified Windows API to detect and access disk(HDD, SSD, ...) or removable media (USB, SDCard, ...).
 The API is close to the traditional one used to manipulate files (CreateFile, Read, Write, Close,...):
 
 ```
@@ -16,9 +16,8 @@ The API is close to the traditional one used to manipulate files (CreateFile, Re
 * BOOL Close(HDEVBLK hDevBlk);
 ```
 
-The argument iDevBlkNumber corresponds to the index of the device, you can use the provided utility to know it or use diskpart.
+The argument iDevBlkNumber corresponds to the index of the device.
 The argument iPartitionNumber corresponds to the partition index. The index 0 corresponds to the whole device.
-
 
 The library has some functions used to enumerate devices and their partitions:
 
