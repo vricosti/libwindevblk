@@ -125,7 +125,11 @@ int main()
 
                     }
                     printf("      PosixPath %s:\n", devBlkInfo.PosixPath);
-                    printf("      PosixName %s:\n", devBlkInfo.PosixName);
+                    printf("      szFileSystemName %s:\n", devBlkInfo.szFileSystemName);
+                    printf("      szRootPathName %s:\n", devBlkInfo.szRootPathName);
+                    printf("      szVolumeName %s:\n", devBlkInfo.szVolumeName);
+                    printf("      szVolumePathName %s:\n", devBlkInfo.szVolumePathName);
+                    
                 }
             }
         }
