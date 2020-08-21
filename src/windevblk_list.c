@@ -615,17 +615,12 @@ BOOL FindVolume(int diskno, PSMI_DEVBLK_ENTRY pDevBlkEntry)
                             printf("%lu", dwErr);
                         }
 
-                        PDWORD length = 0;
+                        DWORD length = 0;
                         TCHAR pathnames[MAX_PATH + 1] = { 0 };
-                        if (GetVolumePathNamesForVolumeName(szNextVolName, (LPTSTR)pathnames, MAX_PATH, length))
+                        if (GetVolumePathNamesForVolumeName(szNextVolName, (LPTSTR)pathnames, MAX_PATH, &length))
                         {
                             _tcsncpy(pDevBlkEntry->szVolumePathName, pathnames, MAX_PATH);
                         }
-
-                        //FILE_NAME_INFO fname_info;
-                        /*FILE_STORAGE_INFO fbasic_info;
-                        BOOL bRet = GetFileInformationByHandleEx(volH, FileStorageInfo, &fbasic_info, sizeof(FILE_STORAGE_INFO));
-                        DWORD dwErr = GetLastError();*/
 
                         free(vde);
                         CloseHandle(volH);

@@ -64,28 +64,28 @@ int main()
             SMI_DRIVE_INFO smiDriveInfo;
             bRet = DevBlkEnumDriveInfo(i, &smiDriveInfo);
             printf("Drive %d:\n", smiDriveInfo.u32DeviceNumber);
-            printf("   SerialNumber %s:\n", smiDriveInfo.szSerialNumber);
-            printf("   ModelNumber %s:\n", smiDriveInfo.szModelNumber);
-            printf("   VendorId %s:\n", smiDriveInfo.szVendorId);
-            printf("   ProductRevision %s:\n", smiDriveInfo.szProductRevision);
-            printf("   DevicePath %s:\n", smiDriveInfo.szDevicePath);
-            printf("   ShortDevicePath %s:\n", smiDriveInfo.szShortDevicePath);
-            printf("   canBePartitioned %d:\n", smiDriveInfo.canBePartitioned);
-            printf("   PartitionStyle %d:\n", smiDriveInfo.LayoutInfo.PartitionStyle);
-            printf("   PartitionCount %d:\n", smiDriveInfo.LayoutInfo.PartitionCount);
+            printf("   SerialNumber: %s\n", smiDriveInfo.szSerialNumber);
+            printf("   ModelNumber: %s\n", smiDriveInfo.szModelNumber);
+            printf("   VendorId: %s\n", smiDriveInfo.szVendorId);
+            printf("   ProductRevision: %s\n", smiDriveInfo.szProductRevision);
+            printf("   DevicePath: %s\n", smiDriveInfo.szDevicePath);
+            printf("   ShortDevicePath: %s\n", smiDriveInfo.szShortDevicePath);
+            printf("   canBePartitioned: %d\n", smiDriveInfo.canBePartitioned);
+            printf("   PartitionStyle: %d\n", smiDriveInfo.LayoutInfo.PartitionStyle);
+            printf("   PartitionCount: %d\n", smiDriveInfo.LayoutInfo.PartitionCount);
             if (smiDriveInfo.LayoutInfo.PartitionStyle == SMI_PARTITION_STYLE_MBR)
             {
-                printf("   Mbr.CheckSum 0x%x:\n", smiDriveInfo.LayoutInfo.Mbr.CheckSum);
-                printf("   Mbr.Signature 0x%x:\n", smiDriveInfo.LayoutInfo.Mbr.Signature);
+                printf("   Mbr.CheckSum: 0x%x\n", smiDriveInfo.LayoutInfo.Mbr.CheckSum);
+                printf("   Mbr.Signature: 0x%x\n", smiDriveInfo.LayoutInfo.Mbr.Signature);
 
             }
             else if (smiDriveInfo.LayoutInfo.PartitionStyle == SMI_PARTITION_STYLE_GPT)
             {
                 GUIDToString(&(smiDriveInfo.LayoutInfo.Gpt.DiskId), tszGUID, sizeof(tszGUID)/sizeof(TCHAR));
                 printf("   Gpt.DiskId: %s\n", tszGUID);
-                printf("   Gpt.StartingUsableOffset %lld:\n", smiDriveInfo.LayoutInfo.Gpt.StartingUsableOffset.QuadPart);
-                printf("   Gpt.UsableLength %lld:\n", smiDriveInfo.LayoutInfo.Gpt.UsableLength.QuadPart);
-                printf("   Gpt.MaxPartitionCount %d:\n", smiDriveInfo.LayoutInfo.Gpt.MaxPartitionCount);
+                printf("   Gpt.StartingUsableOffset: %lld\n", smiDriveInfo.LayoutInfo.Gpt.StartingUsableOffset.QuadPart);
+                printf("   Gpt.UsableLength: %lld\n", smiDriveInfo.LayoutInfo.Gpt.UsableLength.QuadPart);
+                printf("   Gpt.MaxPartitionCount: %d\n", smiDriveInfo.LayoutInfo.Gpt.MaxPartitionCount);
                 
             }
             else
@@ -102,33 +102,33 @@ int main()
                 {
                     printf("   *Partition %d (PosixPath = %s):\n", i, devBlkInfo.PosixPath);
 
-                    printf("      PartitionLength %lld:\n", devBlkInfo.PartitionLength.QuadPart);
-                    printf("      StartingOffset %lld:\n", devBlkInfo.StartingOffset.QuadPart);
-                    printf("      EndingOffset %lld:\n", devBlkInfo.EndingOffset.QuadPart);
+                    printf("      PartitionLength: %lld\n", devBlkInfo.PartitionLength.QuadPart);
+                    printf("      StartingOffset: %lld\n", devBlkInfo.StartingOffset.QuadPart);
+                    printf("      EndingOffset: %lld\n", devBlkInfo.EndingOffset.QuadPart);
                     if (devBlkInfo.PartitionStyle == SMI_PARTITION_STYLE_MBR)
                     {
-                        printf("      Mbr.BootIndicator 0x%x:\n", devBlkInfo.Mbr.BootIndicator);
-                        printf("      Mbr.RecognizedPartition %d:\n", devBlkInfo.Mbr.RecognizedPartition);
+                        printf("      Mbr.BootIndicator: 0x%x\n", devBlkInfo.Mbr.BootIndicator);
+                        printf("      Mbr.RecognizedPartition: %d\n", devBlkInfo.Mbr.RecognizedPartition);
                         GUIDToString(&(devBlkInfo.Mbr.PartitionId), tszGUID, sizeof(tszGUID) / sizeof(TCHAR));
-                        printf("      Mbr.PartitionId %s:\n", tszGUID);
+                        printf("      Mbr.PartitionId: %s\n", tszGUID);
 
                     }
                     else if (devBlkInfo.PartitionStyle == SMI_PARTITION_STYLE_GPT)
                     {
                         GUIDToString(&(devBlkInfo.Gpt.PartitionType), tszGUID, sizeof(tszGUID) / sizeof(TCHAR));
-                        printf("      Gpt.PartitionType %s:\n", tszGUID);
+                        printf("      Gpt.PartitionType: %s\n", tszGUID);
                         GUIDToString(&(devBlkInfo.Gpt.PartitionId), tszGUID, sizeof(tszGUID) / sizeof(TCHAR));
-                        printf("      Gpt.PartitionId %s:\n", tszGUID);
+                        printf("      Gpt.PartitionId: %s\n", tszGUID);
                     }
                     else
                     {
 
                     }
                     //printf("      PosixPath %s:\n", devBlkInfo.PosixPath);
-                    printf("      szFileSystemName %s:\n", devBlkInfo.szFileSystemName);
-                    printf("      szRootPathName %s:\n", devBlkInfo.szRootPathName);
-                    printf("      szVolumeName %s:\n", devBlkInfo.szVolumeName);
-                    printf("      szVolumePathName %s:\n", devBlkInfo.szVolumePathName);
+                    printf("      szFileSystemName: %s\n", devBlkInfo.szFileSystemName);
+                    printf("      szRootPathName: %s\n", devBlkInfo.szRootPathName);
+                    printf("      szVolumeName: %s\n", devBlkInfo.szVolumeName);
+                    printf("      szVolumePathName: %s\n", devBlkInfo.szVolumePathName);
                     
                 }
             }
