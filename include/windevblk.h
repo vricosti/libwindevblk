@@ -156,23 +156,6 @@ extern "C" {
     } SMI_DRIVE_INFO, * PSMI_DRIVE_INFO;
 
 
-    /*typedef struct _SMI_ENUMDRIVE_INFO
-    {
-        DWORD u32DeviceNumber;
-        CHAR szSerialNumber[1000];
-        CHAR szModelNumber[1000];
-        CHAR szVendorId[1000];
-        CHAR szProductRevision[1000];
-        CHAR szDevicePath[1000];
-        CHAR szShortDevicePath[MAX_PATH + 1];
-        INT	canBePartitioned;
-        DWORD BytesPerSector;
-        LARGE_INTEGER DiskSize;
-        DWORD PartitionStyle;
-        DWORD PartitionCount;
-    } SMI_ENUMDRIVE_INFO, *PSMI_ENUMDRIVE_INFO;*/
-
-
     typedef struct _SMI_DEVBLK_INFO
     {
         PVOID Unused;
@@ -223,22 +206,6 @@ extern "C" {
         _Out_ PSMI_DEVBLK_INFO pDevBlkInfo
     );
 
-    BOOL WINAPI DevBlkEnumDrives(
-        _Out_ LPBYTE  pDriveInfoArray,
-        _In_  DWORD   cbBuf,
-        _Out_ LPDWORD pcbNeeded,
-        _Out_ LPDWORD pcReturned
-    );
-
-
-    BOOL WINAPI DevBlkEnumDevices(
-        _Out_ LPBYTE  pDevBlkArray,
-        _In_  DWORD   cbBuf,
-        _Out_ LPDWORD pcbNeeded,
-        _Out_ LPDWORD pcReturned
-    );
-
-	
 	HDEVBLK WINAPI DevBlkOpen(
 		_In_ UINT iDevBlkNumber, /* iDevBlkNumber is the device number ie 0 opens \\\\.\\PhysicalDrive0 */
 		_In_ UINT iPartitionNumber,
@@ -263,8 +230,6 @@ extern "C" {
         _Out_ PLARGE_INTEGER lpFileSize
     );
 
-
-    
    DWORD WINAPI DevBlkSetPointer(
         _In_ HDEVBLK hDevBlk,
         _In_ LONG lDistanceToMove,

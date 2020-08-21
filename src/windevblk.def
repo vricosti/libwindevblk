@@ -3,8 +3,6 @@ EXPORTS
 DevBlkGetDriveCount
 DevBlkEnumDriveInfo
 DevBlkEnumDevBlkInfo
-DevBlkEnumDrives
-DevBlkEnumDevices
 DevBlkOpen
 DevBlkGetFileSizeEx
 DevBlkGetDiskHandle
