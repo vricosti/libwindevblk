@@ -1,5 +1,5 @@
 # libwindevblk
-Library to easily read/write windows partitions or disk drives
+Windows Library to easily read/write partitions or disk drives
 
 libwindevblk provides a simplified Windows API to detect and access disk(HDD, SSD, ...) or removable media (USB, SDCard, ...).
 The API is close to the traditional one used to manipulate files (CreateFile, Read, Write, Close,...):
