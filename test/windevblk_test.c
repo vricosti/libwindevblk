@@ -100,7 +100,7 @@ int main()
                 bRet = DevBlkEnumDevBlkInfo(smiDriveInfo.u32DeviceNumber, i, &devBlkInfo);
                 if (bRet)
                 {
-                    printf("   *Partition %d:\n", i);
+                    printf("   *Partition %d (PosixPath = %s):\n", i, devBlkInfo.PosixPath);
 
                     printf("      PartitionLength %lld:\n", devBlkInfo.PartitionLength.QuadPart);
                     printf("      StartingOffset %lld:\n", devBlkInfo.StartingOffset.QuadPart);
@@ -124,7 +124,7 @@ int main()
                     {
 
                     }
-                    printf("      PosixPath %s:\n", devBlkInfo.PosixPath);
+                    //printf("      PosixPath %s:\n", devBlkInfo.PosixPath);
                     printf("      szFileSystemName %s:\n", devBlkInfo.szFileSystemName);
                     printf("      szRootPathName %s:\n", devBlkInfo.szRootPathName);
                     printf("      szVolumeName %s:\n", devBlkInfo.szVolumeName);
